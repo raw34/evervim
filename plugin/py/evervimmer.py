@@ -230,7 +230,8 @@ class Evervimmer(object):
 
     def createNote(self):  # {{{
         try:
-            Evervimmer.currentnote = Evervimmer.editor.api.newNote()
+            notebookGuid = self.currentNotebook.guid if hasattr(self, "currentNotebook") else None
+            Evervimmer.currentnote = Evervimmer.editor.api.newNote(notebookGuid)
             self.checkNote()
             createdNote = Evervimmer.editor.api.createNote(Evervimmer.currentnote)
             Evervimmer.currentnote = createdNote

@@ -47,9 +47,9 @@ class EvernoteAPI(object):
         return self.__getNoteStore().createNote(authToken, note)
     #}}}
 
-    def newNote(self):  # {{{
+    def newNote(self, notebookGuid = None):  # {{{
         """ return Types.Note() """
-        return Types.Note()
+        return Types.Note(notebookGuid = notebookGuid)
     #}}}
 
     def updateNote(self, note):  # {{{
