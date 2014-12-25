@@ -31,9 +31,11 @@ class EvernoteAPI(object):
     #}}}
 #### constractuor.
 
-    def __init__(self, devtokens):  # {{{
+    def __init__(self, devtokens, host):  # {{{
         """ initialize """
         self.devtokens = devtokens
+        self.userstore_uri = "https://" + host + "/edam/user"
+        self.notestore_uribase = "https://" + host + "/edam/note/"
 
         self.__setUserStore()
         self.__versioncheck()
@@ -158,7 +160,7 @@ class EvernoteAPI(object):
 
     def __setUserStore(self):  # {{{
         """ setup userStore. """
-        userStoreHttpClient = THttpClient.THttpClient(USERSTORE_URI)
+        userStoreHttpClient = THttpClient.THttpClient(self.userstore_uri)
         userStoreProtocol = TBinaryProtocol.TBinaryProtocol(userStoreHttpClient)
         self.userStore = UserStore.Client(userStoreProtocol)
     #}}}
@@ -219,11 +221,10 @@ CONSUMER_KEY = 'kakkyz2'
 CONSUMER_SECRET = '960305afca85b6b0'
 
 #EVERNOTE_HOST = "sandbox.evernote.com"
-EVERNOTE_HOST = "www.evernote.com"
-USERSTORE_URI = "https://" + EVERNOTE_HOST + "/edam/user"
-CONSUMER_SECRET = '960305afca85b6b0'
-
-NOTESTORE_URIBASE = "https://" + EVERNOTE_HOST + "/edam/note/"
+#EVERNOTE_HOST = "www.evernote.com"
+#EVERNOTE_HOST = "app.yinxiang.com"
+#USERSTORE_URI = "https://" + EVERNOTE_HOST + "/edam/user"
+#NOTESTORE_URIBASE = "https://" + EVERNOTE_HOST + "/edam/note/"
 
 AUTH_REFRESH_LATE = 0.6
 # }}}

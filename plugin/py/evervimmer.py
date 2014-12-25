@@ -43,6 +43,7 @@ class Evervimmer(object):
 
     """ prefs from vim option """
     def setPref(self):  # {{{
+        self.pref.host                 = vim.eval("g:evervim_host")
         self.pref.workdir              = vim.eval("g:evervim_workdir")
         self.pref.devtoken             = vim.eval("g:evervim_devtoken")
         self.pref.sortnotebooks        = vim.eval("g:evervim_sortnotebooks")

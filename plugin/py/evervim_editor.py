@@ -16,6 +16,7 @@ class EvervimPref(object):
         if EvervimPref._instance is not None:
             raise RuntimeError("EvervimPref must be one object!!!")
 
+        self.host                 = None
         self.workdir              = None
         self.devtoken             = None
         self.sortnotebooks        = None
@@ -55,7 +56,7 @@ class EvervimEditor(object):
         if EvervimPref.getInstance().devtoken is None:
             raise AttributeError("devtoken must be set!!")
 
-        self.api = EvernoteAPI(pref.devtoken)
+        self.api = EvernoteAPI(pref.devtoken, pref.host)
 
     def note2buffer(self, note):
         """ return strings array for buffer from note. """

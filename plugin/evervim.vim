@@ -13,6 +13,10 @@ endif
 "
 " initialize {{{
 " 作業用フォルダの位置"
+if !exists('g:evervim_host')
+    let g:evervim_host = 'www.evernote.com'
+endif
+
 if !exists('g:evervim_workdir')
     let g:evervim_workdir = $HOME . '/.evervim'
 endif
